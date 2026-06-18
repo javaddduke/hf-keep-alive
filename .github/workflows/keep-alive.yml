@@ -32,4 +32,3 @@ jobs:
 
       - name: Summary
         run: echo "✅ All spaces pinged at $(date)"
-https://javaeeduke-n8n-free.hf.space/
