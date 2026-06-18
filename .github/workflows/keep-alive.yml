@@ -1,0 +1,35 @@
+name: Keep HF Space Alive
+
+on:
+  schedule:
+    # 测试用：每分钟一次
+    - cron: '* * * * *'
+  # 可手动触发
+  workflow_dispatch:
+
+jobs:
+  ping-all-spaces:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Ping Space 1
+        run: |
+          echo "=== Space 1 - $(date) ==="
+          curl -s -o /dev/null -w "Space1 HTTP Status: %{http_code}\n" \
+            https://javaeeduke-n8n-free.hf.space/
+
+      - name: Ping Space 2
+        run: |
+          echo "=== Space 2 - $(date) ==="
+          curl -s -o /dev/null -w "Space2 HTTP Status: %{http_code}\n" \
+            https://javaeeduke-om.hf.space/
+
+      - name: Ping Space 3
+        run: |
+          echo "=== Space 3 - $(date) ==="
+          curl -s -o /dev/null -w "Space3 HTTP Status: %{http_code}\n" \
+            https://javaeeduke-freellmapi.hf.space/
+
+      - name: Summary
+        run: echo "✅ All spaces pinged at $(date)"
+https://javaeeduke-n8n-free.hf.space/
